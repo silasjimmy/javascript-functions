@@ -24,8 +24,8 @@ const printCell = (cell, state) => {
 const corners = (state = []) => {
   if (state.length === 0) {
     return {
-      topright: [0, 0],
-      bottomleft: [0, 0]
+      topRight: [0, 0],
+      bottomLeft: [0, 0]
     }
   }
 
@@ -33,19 +33,19 @@ const corners = (state = []) => {
   const ys = state.map(([_, y]) => y);
 
   return {
-    topright: [Math.max(...xs), Math.max(...ys)],
-    bottomleft: [Math.min(...xs), Math.min(...ys)]
+    topRight: [Math.max(...xs), Math.max(...ys)],
+    bottomLeft: [Math.min(...xs), Math.min(...ys)]
   }
 };
 
 const printCells = (state) => {
-  const { bottomleft, topright } = corners(state);
+  const { bottomLeft, topRight } = corners(state);
   let accumulator = "";
 
-  for (let y = topright[1]; y >= bottomleft[1]; y--) {
+  for (let y = topRight[1]; y >= bottomLeft[1]; y--) {
     let row = [];
 
-    for (x = bottomleft[0]; x <= topright[0]; x++) {
+    for (x = bottomLeft[0]; x <= topRight[0]; x++) {
       row.push(printCell([x, y], state));
     }
 
@@ -74,11 +74,11 @@ const willBeAlive = (cell, state) => {
 };
 
 const calculateNext = (state) => {
-  const { bottomleft, topright } = corners(state);
+  const { bottomLeft, topRight } = corners(state);
   let res = [];
 
-  for (let y = topright[1] + 1; y >= bottomleft[1] - 1; y--) {
-    for (let x = bottomleft[0] - 1; x <= topright[0] + 1; x++) {
+  for (let y = topRight[1] + 1; y >= bottomLeft[1] - 1; y--) {
+    for (let x = bottomLeft[0] - 1; x <= topRight[0] + 1; x++) {
       res = res.concat(willBeAlive([x, y], state) ? [[x, y]] : []);
     }
   }

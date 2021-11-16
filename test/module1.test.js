@@ -70,7 +70,7 @@ describe("Conway's Game of Life", () => {
         boundContains([1, 2]) &&
         boundContains([3, 4]) &&
         boundContains([4, 4]),
-        "Have you implemented a check that the passed cell is in the passed game state? Needs to return true"
+        "Have you implemented a check that the passed cell is in the passed game state?"
       );
       assert(
         !(
@@ -78,7 +78,7 @@ describe("Conway's Game of Life", () => {
           boundContains([2, 1]) ||
           boundContains([3, 3])
         ),
-        "Have you implemented a check that the passed cell is in the passed game state? Needs to return false"
+        "Have you implemented a check that the passed cell is in the passed game state?"
       );
     });
   });
